@@ -1,8 +1,12 @@
 package com.company;
 
+import com.company.atvaizdavimas.Atvaizdavimas;
+
 public class Main {
 
     public static void main(String[] args) {
-	System.out.println("Hello");
+
+        Atvaizdavimas objektas = new Atvaizdavimas();
+
     }
 }
