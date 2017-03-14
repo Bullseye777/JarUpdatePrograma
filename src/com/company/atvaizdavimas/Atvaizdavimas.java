@@ -54,13 +54,13 @@ public class Atvaizdavimas {
 
             PreparedStatement statement = connection.prepareStatement("INSERT INTO `students` (`name`, `surname`, `phone`, `email`) VALUES (?, ?, ?, ?)");
             System.out.println("Ivesti Varda");
-            String name = sc.nextLine();
+            String name = sc.next();
             System.out.println("Ivesti Pavarde");
-            String surname = sc.nextLine();
+            String surname = sc.next();
             System.out.println("Ivesti Telefona");
-            String phone = sc.nextLine();
+            String phone = sc.next();
             System.out.println("Ivesti El.pasta");
-            String email = sc.nextLine();
+            String email = sc.next();
             statement.setString(1, name);
             statement.setString(2, surname);
             statement.setString(3, phone);
@@ -77,22 +77,11 @@ public class Atvaizdavimas {
 
     private void Deletinimas() {
         try {
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM `students`;");
-            while (resultSet.next()) {
-                System.out.print(resultSet.getInt("id"));
-                System.out.print("|");
-                System.out.print(resultSet.getString("name"));
-                System.out.print("|");
-                System.out.print(resultSet.getString("surname"));
-                System.out.print("");
-                System.out.print(resultSet.getInt("phone"));
-                System.out.print("");
-                System.out.print(resultSet.getString("email"));
-                System.out.println("");
+            System.out.println("Ivesti ID studento kuri norite istrinti");
+            int id = sc.nextInt();
+            PreparedStatement statement = connection.prepareStatement("DELETE FROM `students` WHERE `students`.`id` = " + id + ";");
+            statement.executeUpdate();
 
-
-            }
         } catch (Exception klaida) {
             System.out.println(klaida);
         }
